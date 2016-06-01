@@ -14,18 +14,14 @@ import java.util.Date;
  */
 public class ConsultaPasajeRespuesta {
     
-    private String codigoVuelo;
+    private Integer codigoVuelo;
     private BigDecimal costoAsiento;
-    private String origen;
-    private String destino;
-    private Date fechaSalida;
-    private Date fechaLlegada;
-
-    public String getCodigoVuelo() {
+    
+    public Integer getCodigoVuelo() {
         return codigoVuelo;
     }
 
-    public void setCodigoVuelo(String codigoVuelo) {
+    public void setCodigoVuelo(Integer codigoVuelo) {
         this.codigoVuelo = codigoVuelo;
     }
 
@@ -36,39 +32,7 @@ public class ConsultaPasajeRespuesta {
     public void setCostoAsiento(BigDecimal costoAsiento) {
         this.costoAsiento = costoAsiento;
     }
-
-    public String getOrigen() {
-        return origen;
-    }
-
-    public void setOrigen(String origen) {
-        this.origen = origen;
-    }
-
-    public String getDestino() {
-        return destino;
-    }
-
-    public void setDestino(String destino) {
-        this.destino = destino;
-    }
-
-    public Date getFechaSalida() {
-        return fechaSalida;
-    }
-
-    public void setFechaSalida(Date fechaSalida) {
-        this.fechaSalida = fechaSalida;
-    }
-
-    public Date getFechaLlegada() {
-        return fechaLlegada;
-    }
-
-    public void setFechaLlegada(Date fechaLlegada) {
-        this.fechaLlegada = fechaLlegada;
-    }
-
+    
     public ConsultaPasajeRespuesta() {
     }
 }

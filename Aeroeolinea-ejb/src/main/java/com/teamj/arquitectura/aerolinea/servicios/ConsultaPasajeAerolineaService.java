@@ -12,6 +12,8 @@ import com.teamj.arquitectura.aerolinea.model.Vuelo;
 import com.teamj.arquitectura.aerolinea.model.VueloReserva;
 import com.teamj.arquitectura.aerolinea.util.ConsultaPasajePeticion;
 import com.teamj.arquitectura.aerolinea.util.ConsultaPasajeRespuesta;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -64,23 +66,17 @@ public class ConsultaPasajeAerolineaService {
     
 
     public List<ConsultaPasajeRespuesta> consultaPasaje(ConsultaPasajePeticion con) {
-        //boolean flag = false;
-     
-        ConsultaPasajeRespuesta consultaResponse = new ConsultaPasajeRespuesta();
-        List<ConsultaPasajeRespuesta> respuestaConsulta = new ArrayList();
+         
+       ConsultaPasajeRespuesta consultaResponse = new ConsultaPasajeRespuesta();
+       List<ConsultaPasajeRespuesta> respuestaConsulta = new ArrayList();
         
-        //Reservacion r=new Reservacion();
-        
-       consultaResponse.setDestino("Guayaquil");
-       consultaResponse.setOrigen("Quito");
+       //Reservacion r=new Reservacion();
+              
+       consultaResponse.setCodigoVuelo(1);
+       consultaResponse.setCostoAsiento(new BigDecimal(100.4));
+       
         
        respuestaConsulta.add(consultaResponse);
- 
-//       String queryString = "select  * from ciudad";
-//        
-//       Query query = em1.createNativeQuery(queryString);
-//       return query.getResultList();
-       
        return respuestaConsulta;
     }
 }
