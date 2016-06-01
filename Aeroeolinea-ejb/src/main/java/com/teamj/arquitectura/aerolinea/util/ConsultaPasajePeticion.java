@@ -13,25 +13,25 @@ import java.util.Date;
  */
 public class ConsultaPasajePeticion {
     
-    private Date fechaSalida;
-    private Date fechaRetorno;
+    private String fechaSalida;
+    private String fechaRetorno;
     private Integer totalAsientos;
     private String origen;
     private String destino;
 
-    public Date getFechaSalida() {
+    public String getFechaSalida() {
         return fechaSalida;
     }
 
-    public void setFechaSalida(Date fechaSalida) {
+    public void setFechaSalida(String fechaSalida) {
         this.fechaSalida = fechaSalida;
     }
 
-    public Date getFechaRetorno() {
+    public String getFechaRetorno() {
         return fechaRetorno;
     }
 
-    public void setFechaRetorno(Date fechaRetorno) {
+    public void setFechaRetorno(String fechaRetorno) {
         this.fechaRetorno = fechaRetorno;
     }
 

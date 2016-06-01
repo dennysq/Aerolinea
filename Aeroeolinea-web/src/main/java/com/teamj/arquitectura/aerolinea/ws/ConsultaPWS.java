@@ -5,10 +5,12 @@
  */
 package com.teamj.arquitectura.aerolinea.ws;
 
+import com.teamj.arquitectura.aerolinea.servicios.ConsultaPasajeAerolineaService;
 import com.teamj.arquitectura.aerolinea.util.ConsultaPasajePeticion;
 import com.teamj.arquitectura.aerolinea.util.ConsultaPasajeRespuesta;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
@@ -18,14 +20,22 @@ import javax.jws.WebService;
  * @author Klever
  */
 @WebService(serviceName = "ConsultaPWS")
+@Stateless()
 public class ConsultaPWS {
     
    @EJB    
-    private com.teamj.arquitectura.aerolinea.servicios.ConsultaPasajeAerolineaService ejbRef;
+    private ConsultaPasajeAerolineaService scpaerolinea;
     
     @WebMethod(operationName = "consultaP")
     public List<ConsultaPasajeRespuesta> consultaP(@WebParam(name = "parametrosBusqueda") ConsultaPasajePeticion consulta) {
-        return ejbRef.consultaPasaje(consulta);
+        return scpaerolinea.consultaPasaje(consulta);
     }
+   
+//   @WebMethod(operationName = "consultaDisponibilidadAerolineas")
+//    public List<ConsultaPasajeRespuesta> consultaDisponibilidadDeHabitaciones(@WebParam(name = "fechaEntrada") String fechaEntrada, @WebParam(name = "fechaSalida") String fechaSalida,
+//                                                                         @WebParam(name = "totalAsientos") Integer totalAsientos, @WebParam(name = "incluyeDesayuno") Boolean incluyeDesayuno) {
+//        System.out.println("fEntrada: "+fechaEntrada);
+//        return scpaerolinea.consulta1(fechaEntrada, fechaSalida, totalAsientos, incluyeDesayuno);
+//    }
     
 }

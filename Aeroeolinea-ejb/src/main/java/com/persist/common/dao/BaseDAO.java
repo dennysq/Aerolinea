@@ -48,7 +48,7 @@ public class BaseDAO {
     /**
      * Objeto que maneja las operaciones de persistencia.
      */
-    @PersistenceContext(name = "punit_aerolinea")
+    @PersistenceContext(name = "punit")
     private EntityManager em;
 
     /**

@@ -41,10 +41,12 @@ public class Reservacion implements Serializable{
     private BigDecimal precio;
     
     @Column(name = "FECHA_SALIDA_R")
-    Date fecha_salida;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date fecha_salida;
     
     @Column(name = "FECHA_RETORNO_R")
-    Date fecha_retorno;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date fecha_retorno;
 
     public Integer getId() {
         return id;

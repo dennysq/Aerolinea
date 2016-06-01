@@ -2,10 +2,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-    <artifactId>Aeroeolinea</artifactId>
-    <groupId>com.teamj.arquitectura</groupId>
-    <version>1</version>
-  </parent>
+        <artifactId>Aeroeolinea</artifactId>
+        <groupId>com.teamj.arquitectura</groupId>
+        <version>1</version>
+    </parent>
 
     <groupId>com.teamj.arquitectura</groupId>
     <artifactId>Aeroeolinea-web</artifactId>
@@ -21,16 +21,20 @@
     
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>Aeroeolinea-ejb</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>com.teamj.arquitectura</groupId>
+            <artifactId>Aeroeolinea-ejb</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+            <scope>provided</scope>
+        </dependency>
+        
     </dependencies>
 
     <build>

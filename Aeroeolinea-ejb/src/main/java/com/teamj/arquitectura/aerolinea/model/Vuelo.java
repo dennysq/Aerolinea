@@ -15,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -41,13 +42,15 @@ public class Vuelo implements Serializable{
     private String destino;
     
     @Column(name = "FECHA_SALIDA_V")
-    Date fecha_salida;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date fecha_salida;
     
     @Column(name = "CAPACIDAD_V")
     private Integer capacidad;
     
     @Column(name = "FECHA_LLEGADA_V")
-    Date fecha_llegada;
+    @Temporal(javax.persistence.TemporalType.TIMESTAMP)
+    private Date fecha_llegada;
     
     @Column(name = "PRECIO_ASIENTO_V")
     private BigDecimal precio_asiento;
