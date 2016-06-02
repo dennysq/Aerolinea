@@ -25,6 +25,11 @@ public class VueloReservaPK implements Serializable{
     public VueloReservaPK() {
     }
 
+    public VueloReservaPK(Integer codigoV, Integer codigoR) {
+        this.codigoV = codigoV;
+        this.codigoR = codigoR;
+    }
+    
     public Integer getCodigoV() {
         return codigoV;
     }

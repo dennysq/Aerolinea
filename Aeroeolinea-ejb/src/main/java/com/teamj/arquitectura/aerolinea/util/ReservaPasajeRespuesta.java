@@ -11,13 +11,13 @@ package com.teamj.arquitectura.aerolinea.util;
  */
 public class ReservaPasajeRespuesta {
     private boolean estado;
-    private String numReserva;
+    private Integer numReserva;
     private String mensajeError;
 
     public ReservaPasajeRespuesta() {
     }
 
-    public ReservaPasajeRespuesta(boolean estado, String numReserva, String mensajeError) {
+    public ReservaPasajeRespuesta(boolean estado, Integer numReserva, String mensajeError) {
         this.estado = estado;
         this.numReserva = numReserva;
         this.mensajeError = mensajeError;
@@ -31,11 +31,11 @@ public class ReservaPasajeRespuesta {
         this.estado = estado;
     }
 
-    public String getNumReserva() {
+    public Integer getNumReserva() {
         return numReserva;
     }
 
-    public void setNumReserva(String numReserva) {
+    public void setNumReserva(Integer numReserva) {
         this.numReserva = numReserva;
     }
 

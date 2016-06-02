@@ -46,20 +46,25 @@ public class ConsultaPasajeAerolineaService {
        List<Vuelo> vuelos = this.vueloDAO.findAll();
        List<ConsultaPasajeRespuesta> respuestaConsulta = new ArrayList();       
        sdf = new SimpleDateFormat("yyyy-MM-dd");
-       
+       int cont=0;
        try{
         Date f_retorno=sdf.parse(con.getFechaRetorno());
         Date f_salida=sdf.parse(con.getFechaSalida());
         for(int i=0;i<vuelos.size();i++){
-             if(vuelos.get(i).getFecha_salida().after(f_salida)){
-            respuestaConsulta.add(new ConsultaPasajeRespuesta(vuelos.get(i).getNumero(),vuelos.get(i).getPrecio_asiento()));
-            break;
+            if(vuelos.get(i).getFecha_salida().after(f_salida)&&cont<=2&&
+                    vuelos.get(i).getOrigen().equals(con.getOrigen())&&
+                    vuelos.get(i).getDestino().equals(con.getDestino())){
+            respuestaConsulta.add(new ConsultaPasajeRespuesta(vuelos.get(i).getNumero(),vuelos.get(i).getPrecio_asiento(),vuelos.get(i).getFecha_salida(),vuelos.get(i).getFecha_llegada()));
+            cont++;
             }
         }
          }
         catch(Exception e)
         { System.out.println("Error de parse de fechas!");
                                              }
+       
+       if(respuestaConsulta.isEmpty()||respuestaConsulta==null)
+            System.out.println("No se encontraron datos");
         return respuestaConsulta;
     }
 }

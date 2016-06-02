@@ -16,6 +16,32 @@ public class ConsultaPasajeRespuesta {
     
     private Integer codigoVuelo;
     private BigDecimal costoAsiento;
+    private Date fecha_salida;
+    private Date fecha_llegada;
+
+    public Date getFecha_salida() {
+        return fecha_salida;
+    }
+
+    public void setFecha_salida(Date fecha_salida) {
+        this.fecha_salida = fecha_salida;
+    }
+
+    public Date getFecha_llegada() {
+        return fecha_llegada;
+    }
+
+    public void setFecha_llegada(Date fecha_llegada) {
+        this.fecha_llegada = fecha_llegada;
+    }
+
+    public ConsultaPasajeRespuesta(Integer codigoVuelo, BigDecimal costoAsiento, Date fecha_salida, Date fecha_llegada) {
+        this.codigoVuelo = codigoVuelo;
+        this.costoAsiento = costoAsiento;
+        this.fecha_salida = fecha_salida;
+        this.fecha_llegada = fecha_llegada;
+    }
+
 
     public ConsultaPasajeRespuesta(Integer codigoVuelo, BigDecimal costoAsiento) {
         this.codigoVuelo = codigoVuelo;

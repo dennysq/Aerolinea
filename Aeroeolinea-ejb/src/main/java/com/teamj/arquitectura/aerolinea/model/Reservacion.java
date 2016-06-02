@@ -48,6 +48,14 @@ public class Reservacion implements Serializable{
     @Temporal(javax.persistence.TemporalType.TIMESTAMP)
     private Date fecha_retorno;
 
+    public Reservacion(Integer codigoC, Date timestamp, BigDecimal precio, Date fecha_salida, Date fecha_retorno) {
+        this.codigoC = codigoC;
+        this.timestamp = timestamp;
+        this.precio = precio;
+        this.fecha_salida = fecha_salida;
+        this.fecha_retorno = fecha_retorno;
+    }
+ 
     public Integer getId() {
         return id;
     }
