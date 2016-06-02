@@ -13,7 +13,10 @@ import com.teamj.arquitectura.aerolinea.model.Vuelo;
 import com.teamj.arquitectura.aerolinea.util.ConsultaPasajePeticion;
 import com.teamj.arquitectura.aerolinea.util.ConsultaPasajeRespuesta;
 import java.math.BigDecimal;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
@@ -33,58 +36,30 @@ public class ConsultaPasajeAerolineaService {
     private VueloReservaDAO vueloReservaDAO;
     @EJB
     private ClienteDAO clienteDAO;
+    private SimpleDateFormat sdf;
     
-//    public Vuelo obtenerPorId(Integer id) {
-//        return this.vueloDAO.findById(id, false);
-//    }
     public Cliente obtenerPorId(Integer id) {
         return this.clienteDAO.findById(id, false);
     }
-//    public List<Vuelo> obtenerVuelosSinReservaPorFecha(Date fechaInicial, Date fechaFinal)
-//    {
-//        List<Vuelo> vuelos = this.vueloDAO.findAll();
-//        List<VueloReserva> reservasVuelos = this.vueloReservaDAO.findAll();
-//        for(VueloReserva res:reservasVuelos)
-//        {
-//                if((res.getReservacion().getFecha_salida().before(fechaInicial) ||
-//                        res.getReservacion().getFecha_salida().equals(fechaInicial)) &&
-//                        (res.getReservacion().getFecha_retorno().after(fechaFinal) ||
-//                        res.getReservacion().getFecha_retorno().equals(fechaFinal)))
-//                {
-//                    for(int i=0; i<vuelos.size();i++)
-//                    {
-//                        if(res.getVuelo().getId().equals(vuelos.get(i).getId()))
-//                        {
-//                           System.out.println(res.getVuelo().getFecha_salida().toString()+"\n");
-//                           vuelos.remove(i);
-//                           i--;
-//                        }
-//                    }
-//                }
-//        }
-//        return vuelos;
-//    }
-    
-    
 
     public List<ConsultaPasajeRespuesta> consultaPasaje(ConsultaPasajePeticion con) {
-         
        List<Vuelo> vuelos = this.vueloDAO.findAll();
-       ConsultaPasajeRespuesta consultaResponse = new ConsultaPasajeRespuesta();
-       List<ConsultaPasajeRespuesta> respuestaConsulta = new ArrayList();
-        
-       //Reservacion r=new Reservacion();
+       List<ConsultaPasajeRespuesta> respuestaConsulta = new ArrayList();       
+       sdf = new SimpleDateFormat("yyyy-MM-dd");
        
-       consultaResponse.setCodigoVuelo(1);
-       consultaResponse.setCostoAsiento(new BigDecimal(100.4));
-       List<Cliente> clientes = this.clienteDAO.findAll();
-       
-       for(int i=0; i<clientes.size();i++)
-        {
-            System.out.println(" "+clientes.get(i).getId()+" \n");
+       try{
+        Date f_retorno=sdf.parse(con.getFechaRetorno());
+        Date f_salida=sdf.parse(con.getFechaSalida());
+        for(int i=0;i<vuelos.size();i++){
+             if(vuelos.get(i).getFecha_salida().after(f_salida)){
+            respuestaConsulta.add(new ConsultaPasajeRespuesta(vuelos.get(i).getNumero(),vuelos.get(i).getPrecio_asiento()));
+            break;
+            }
         }
-       
-       respuestaConsulta.add(consultaResponse);
-       return respuestaConsulta;
+         }
+        catch(Exception e)
+        { System.out.println("Error de parse de fechas!");
+                                             }
+        return respuestaConsulta;
     }
 }

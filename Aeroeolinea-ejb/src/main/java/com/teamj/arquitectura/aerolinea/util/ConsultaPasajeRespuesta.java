@@ -16,6 +16,11 @@ public class ConsultaPasajeRespuesta {
     
     private Integer codigoVuelo;
     private BigDecimal costoAsiento;
+
+    public ConsultaPasajeRespuesta(Integer codigoVuelo, BigDecimal costoAsiento) {
+        this.codigoVuelo = codigoVuelo;
+        this.costoAsiento = costoAsiento;
+    }
     
     public Integer getCodigoVuelo() {
         return codigoVuelo;
